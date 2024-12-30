@@ -149,6 +149,20 @@ def gui_settings(config: Configuration) -> None:
                 [
                     sg.Column([
                         [
+                            sg.Text('Разделитель CSV'),
+                        ]
+                    ], expand_x=True, pad=0),
+                    sg.Column([
+                                [
+                                    sg.Input(size=(3, 1), justification='center', key='-WRITER.CSV.DELIMITER-',
+                                             tooltip='Символ-разделитель колонок в CSV.',
+                                             default_text = config.writer.csv.delimiter),
+                                ],
+                            ], element_justification='right', pad=0),
+                ],
+                [
+                    sg.Column([
+                        [
                             sg.Column([
                                 [
                                     sg.Text('Сложные колонки'),

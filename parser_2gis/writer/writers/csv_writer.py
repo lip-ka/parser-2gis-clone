@@ -17,6 +17,15 @@ from .file_writer import FileWriter
 class CSVWriter(FileWriter):
     """Writer to CSV table."""
     @property
+    def _dialect(self) -> csv.Dialect:
+        class CustomDialect(csv.Dialect):
+            delimiter = self._options.csv.delimiter
+            quoting = csv.QUOTE_MINIMAL
+            lineterminator = "\n"
+            quotechar= '"'
+        return CustomDialect
+    
+    @property
     def _type_names(self) -> dict[str, str]:
         return {
             'parking': 'Парковка',
@@ -76,7 +85,7 @@ class CSVWriter(FileWriter):
 
     def __enter__(self) -> CSVWriter:
         super().__enter__()
-        self._writer = csv.DictWriter(self._file, self._data_mapping.keys())
+        self._writer = csv.DictWriter(self._file, self._data_mapping.keys(), dialect=self._dialect)
         self._writer.writerow(self._data_mapping)  # Write header
         self._wrote_count = 0
         return self
@@ -98,9 +107,9 @@ class CSVWriter(FileWriter):
 
         # Looking for empty columns
         with self._open_file(self._file_path, 'r') as f_csv:
-            csv_reader = csv.DictReader(f_csv, self._data_mapping.keys())  # type: ignore
+            csv_reader = csv.DictReader(f_csv, self._data_mapping.keys(), dialect=self._dialect)  # type: ignore
             next(csv_reader, None)  # Skip header
-            for row in csv.DictReader(f_csv, self._data_mapping.keys()):  # type: ignore
+            for row in csv.DictReader(f_csv, self._data_mapping.keys(), dialect=self._dialect):  # type: ignore
                 for column_name in complex_columns_count.keys():
                     if row[column_name] != '':
                         complex_columns_count[column_name] += 1
@@ -124,8 +133,8 @@ class CSVWriter(FileWriter):
 
         with self._open_file(tmp_csv_name, 'w') as f_tmp_csv, \
                 self._open_file(self._file_path, 'r') as f_csv:
-            csv_writer = csv.DictWriter(f_tmp_csv, new_data_mapping.keys())  # type: ignore
-            csv_reader = csv.DictReader(f_csv, self._data_mapping.keys())  # type: ignore
+            csv_writer = csv.DictWriter(f_tmp_csv, new_data_mapping.keys(), dialect=self._dialect)  # type: ignore
+            csv_reader = csv.DictReader(f_csv, self._data_mapping.keys(), dialect=self._dialect)  # type: ignore
             csv_writer.writerow(new_data_mapping)  # Write new header
             next(csv_reader, None)  # Skip header
 
