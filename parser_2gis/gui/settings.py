@@ -149,6 +149,20 @@ def gui_settings(config: Configuration) -> None:
                 [
                     sg.Column([
                         [
+                            sg.Text('Соединение комплексных значений'),
+                        ]
+                    ], expand_x=True, pad=0),
+                    sg.Column([
+                        [
+                            sg.Input(size=(3, 1), justification='center', key='-WRITER.CSV.JOIN_CHAR-',
+                                     tooltip='Символ-разделитель для данных внутри полей включающих группы значений.',
+                                     default_text = config.writer.csv.join_char),
+                        ],
+                     ], element_justification='right', pad=0),
+                ],
+                [
+                    sg.Column([
+                        [
                             sg.Column([
                                 [
                                     sg.Text('Сложные колонки'),
