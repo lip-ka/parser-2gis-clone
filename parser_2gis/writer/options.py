@@ -16,6 +16,7 @@ class CSVOptions(BaseModel):
         remove_empty_columns: Remove empty columns after parsing process finished.
         remove_duplicates: Remove duplicates after parsing process finished.
         join_char: Char for joining complex values.
+        delimiter: csv delimiter
     """
     add_rubrics: bool = True
     add_comments: bool = True
@@ -23,7 +24,15 @@ class CSVOptions(BaseModel):
     remove_empty_columns: bool = True
     remove_duplicates: bool = True
     join_char: str = '; '
+    delimiter: str = ';'
 
+    @validator('delimiter')
+    def valid_delimiter(cls, v: str) -> str:
+        if len(v) != 1:
+            raise ValueError('delimiter must be a single character')
+        if v in ('\n', '\r'):
+            raise ValueError('delimiter must not be a newline character')
+        return v
 
 class WriterOptions(BaseModel):
     """Represent all possible options for File Writer.
