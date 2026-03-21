@@ -219,7 +219,11 @@ class CSVWriter(FileWriter):
 
         # Reviews
         if catalog_item.reviews:
-            data['general_rating'] = catalog_item.reviews.general_rating
+            # Represent rating as locale-friendly decimal string to avoid
+            # spreadsheet auto-conversion into a date (e.g. `4.8` -> `04.08`).
+            if catalog_item.reviews.general_rating is not None:
+                rating = f'{catalog_item.reviews.general_rating:.2f}'.rstrip('0').rstrip('.')
+                data['general_rating'] = rating.replace('.', ',')
             data['general_review_count'] = catalog_item.reviews.general_review_count
 
         # Point location
