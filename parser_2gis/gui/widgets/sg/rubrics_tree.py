@@ -2,7 +2,9 @@ from __future__ import annotations
 
 from typing import Any
 
-import PySimpleGUI as sg
+from ...sg import load_sg_module
+
+sg = load_sg_module()
 
 
 class RubricsTree(sg.Tree):  # type: ignore

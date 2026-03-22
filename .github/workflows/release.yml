@@ -4,6 +4,12 @@ on:
   push:
     tags:
       - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to release (for example v1.2.6)'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -34,7 +40,12 @@ jobs:
     steps:
     - name: Get the version
       id: get_version
-      run: echo ::set-output name=version::${GITHUB_REF#refs/tags/}
+      run: |
+        ref="${GITHUB_REF#refs/tags/}"
+        if [ -n "${{ github.event.inputs.tag }}" ]; then
+          ref="${{ github.event.inputs.tag }}"
+        fi
+        echo "version=$ref" >> $GITHUB_OUTPUT
       shell: bash
 
     - uses: actions/checkout@v4
@@ -84,7 +95,12 @@ jobs:
     - name: Get the version
       id: get_version
       run: |
-        echo ::set-output name=version::${GITHUB_REF#refs/tags/v}
+        ref="${GITHUB_REF#refs/tags/v}"
+        input_tag="${{ github.event.inputs.tag }}"
+        if [ -n "$input_tag" ]; then
+          ref="${input_tag#v}"
+        fi
+        echo "version=$ref" >> $GITHUB_OUTPUT
       shell: bash
 
     - uses: actions/checkout@v4
@@ -104,7 +120,9 @@ jobs:
         name: Parser2GIS ${{ steps.changelog_reader.outputs.version }}
         body: ${{ steps.changelog_reader.outputs.changes }}
         prerelease: ${{ steps.changelog_reader.outputs.status == 'prereleased' }}
-        draft: true
+        draft: false
         artifacts: "dist-*/*"
         allowUpdates: true
+        makeLatest: true
+        artifactErrorsFailBuild: true
         token: ${{ secrets.GITHUB_TOKEN }}

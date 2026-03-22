@@ -10,7 +10,9 @@ if TYPE_CHECKING:
     import tkinter as tk
 
 if GUI_ENABLED:
-    import PySimpleGUI as sg
+    from .sg import load_sg_module
+
+    sg = load_sg_module()
     from .widgets.tk import LineNumberedText
 
 
@@ -58,7 +60,7 @@ def gui_urls_editor(urls: list[str]) -> list[str] | None:
         ],
     ]
 
-    with invoke_widget_hook(sg.PySimpleGUI, '-COL_URLS-', create_text_widget) as get_widget:
+    with invoke_widget_hook(sg, '-COL_URLS-', create_text_widget) as get_widget:
         window = sg.Window('URLs', layout=layout, finalize=True, auto_size_text=True,
                            font='Any 12', modal=True, keep_on_top=True)
 

@@ -10,7 +10,9 @@ from .error_popup import gui_error_popup
 from .utils import ensure_gui_enabled
 
 if GUI_ENABLED:
-    import PySimpleGUI as sg
+    from .sg import load_sg_module
+
+    sg = load_sg_module()
 
 
 @ensure_gui_enabled
