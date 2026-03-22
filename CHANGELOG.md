@@ -2,6 +2,11 @@
 
 ## [Невошедшее]
 
+## [1.2.7] - 22-03-2026
+### Исправлено
+- Release: Для standalone-сборки добавлены hidden-import зависимости `PySimpleGUI` и `FreeSimpleGUI`, чтобы GUI корректно работал в готовом `.exe`.
+- GUI: Загрузка SimpleGUI-модуля переведена на явные импорты, что повышает совместимость с PyInstaller при анализе зависимостей.
+
 ## [1.2.6] - 22-03-2026
 ### Исправлено
 - GUI: Устранён цикл импорта при проверке доступности GUI (`common -> gui.sg -> gui.__init__ -> app -> common`), из-за которого приложение не запускалось.
@@ -124,7 +129,8 @@
 - Первый релиз.
 
 
-[Невошедшее]: https://github.com/interlark/parser-2gis/compare/v1.2.6...HEAD
+[Невошедшее]: https://github.com/interlark/parser-2gis/compare/v1.2.7...HEAD
+[1.2.7]: https://github.com/interlark/parser-2gis/compare/v1.2.6...v1.2.7
 [1.2.6]: https://github.com/interlark/parser-2gis/compare/v1.2.5...v1.2.6
 [1.2.5]: https://github.com/interlark/parser-2gis/compare/v1.2.4...v1.2.5
 [1.2.4]: https://github.com/interlark/parser-2gis/compare/v1.2.3...v1.2.4

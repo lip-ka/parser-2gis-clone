@@ -50,6 +50,38 @@
   pip install parser-2gis[gui]
   ```
 
+### Локальный запуск проекта (для разработки в PyCharm)
+
+Рекомендуется использовать отдельное виртуальное окружение и устанавливать зависимости через `python -m pip`,
+чтобы `pip` и интерпретатор проекта всегда совпадали.
+
+```bash
+# Создать и активировать venv
+python -m venv .venv
+# Windows (PowerShell)
+.\.venv\Scripts\Activate.ps1
+# Linux/MacOS
+source .venv/bin/activate
+
+# Установить зависимости проекта
+python -m pip install --upgrade pip
+python -m pip install -e .
+```
+
+Для запуска GUI дополнительно установите GUI-зависимости:
+
+```bash
+python -m pip install -e ".[gui]"
+```
+
+После этого GUI можно запускать без обязательных CLI-аргументов:
+
+```bash
+python parser-2gis.py
+```
+
+Если хотите запускать CLI, укажите параметры `-i`, `-o`, `-f`.
+
 ## 📖 Документация
 Описание работы доступно на [вики](https://github.com/interlark/parser-2gis/wiki).
 
