@@ -2,6 +2,16 @@
 
 ## [Невошедшее]
 
+## [1.2.8] - 22-03-2026
+### Добавлено
+- CSV/XLSX: Расширен мэппинг выгрузки полями из уже существующей модели карточки:
+  `locale`, `city_alias`, `region_id`, `segment_id`, `is_deleted`, `timezone_offset`,
+  `org_id`, `org_name`, `org_branch_count`,
+  `schedule_is_24x7`, `schedule_description`, `schedule_comment`, `schedule_date_from`, `schedule_date_to`.
+
+### Техническое
+- Обновлены релизные связи версий под тег `v1.2.8`.
+
 ## [1.2.7] - 22-03-2026
 ### Исправлено
 - Release: Для standalone-сборки добавлены hidden-import зависимости `PySimpleGUI` и `FreeSimpleGUI`, чтобы GUI корректно работал в готовом `.exe`.
@@ -129,7 +139,8 @@
 - Первый релиз.
 
 
-[Невошедшее]: https://github.com/interlark/parser-2gis/compare/v1.2.7...HEAD
+[Невошедшее]: https://github.com/interlark/parser-2gis/compare/v1.2.8...HEAD
+[1.2.8]: https://github.com/interlark/parser-2gis/compare/v1.2.7...v1.2.8
 [1.2.7]: https://github.com/interlark/parser-2gis/compare/v1.2.6...v1.2.7
 [1.2.6]: https://github.com/interlark/parser-2gis/compare/v1.2.5...v1.2.6
 [1.2.5]: https://github.com/interlark/parser-2gis/compare/v1.2.4...v1.2.5

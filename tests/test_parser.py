@@ -22,6 +22,24 @@ def check_csv_result(result_path, num_records):
         assert len(list(reader)) == num_records + 1  # `num_records` + header
 
 
+def check_csv_extended_fields(result_path):
+    """Check extended CSV fields from existing model."""
+    with open(result_path, 'r', encoding='utf-8-sig', errors='replace') as f:
+        reader = csv.DictReader(f, delimiter=';')
+        row = next(reader)
+
+    assert row['Локаль'] == 'ru_RU'
+    assert row['Алиас города'] == 'moscow'
+    assert row['ID региона'] == 'region-1'
+    assert row['ID сегмента'] == 'segment-1'
+    assert row['ID организации'] == 'org-1'
+    assert row['Название организации'] == 'Test Org'
+    assert row['Количество филиалов организации'] == '5'
+    assert row['Работает 24/7'] == 'True'
+    assert row['Комментарий к расписанию'] == 'Ежедневно'
+    assert row['Смещение часового пояса (мин)'] == '180'
+
+
 def check_json_result(result_path, num_records):
     """Check JSON output.
 
@@ -70,6 +88,20 @@ def test_parser(monkeypatch, format, result_checker, num_records=5):
                                 'locale': 'ru_RU',
                                 'type': 'firm',
                                 'name': f'Test Item {i}',
+                                'city_alias': 'moscow',
+                                'region_id': 'region-1',
+                                'segment_id': 'segment-1',
+                                'timezone_offset': 180,
+                                'org': {
+                                    'id': 'org-1',
+                                    'name': 'Test Org',
+                                    'branch_count': 5,
+                                },
+                                'schedule': {
+                                    'Mon': {'working_hours': [{'from': '09:00', 'to': '18:00'}]},
+                                    'is_24x7': True,
+                                    'comment': 'Ежедневно',
+                                },
                                 'contact_groups': [],
                                 'adm_div': [],
                                 'rubrics': [],
@@ -97,3 +129,6 @@ def test_parser(monkeypatch, format, result_checker, num_records=5):
 
         # Check parsed results
         result_checker(result_path, num_records)
+
+        if format == 'csv':
+            check_csv_extended_fields(result_path)
