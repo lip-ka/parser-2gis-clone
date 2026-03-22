@@ -6,6 +6,7 @@ from tempfile import TemporaryDirectory
 
 import pytest
 from parser_2gis import main as parser_main
+from parser_2gis.runner import cli as cli_runner
 
 
 def check_csv_result(result_path, num_records):
@@ -16,7 +17,8 @@ def check_csv_result(result_path, num_records):
         num_records: Expected number of records.
     """
     with open(result_path, 'r', encoding='utf-8-sig', errors='replace') as f:
-        reader = csv.reader(f)
+        # CSV writer uses `;` delimiter by default.
+        reader = csv.reader(f, delimiter=';')
         assert len(list(reader)) == num_records + 1  # `num_records` + header
 
 
@@ -48,6 +50,36 @@ def test_parser(monkeypatch, format, result_checker, num_records=5):
         num_records: Number of records to be parsed.
     """
     with monkeypatch.context() as m, TemporaryDirectory() as tmpdir:
+        class DummyParser:
+            def __init__(self, parser_options):
+                self._parser_options = parser_options
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *exc_info):
+                pass
+
+            def parse(self, writer):
+                for i in range(self._parser_options.max_records):
+                    writer.write({
+                        'meta': {'code': 200},
+                        'result': {
+                            'items': [{
+                                'id': f'{i}_dummy',
+                                'locale': 'ru_RU',
+                                'type': 'firm',
+                                'name': f'Test Item {i}',
+                                'contact_groups': [],
+                                'adm_div': [],
+                                'rubrics': [],
+                            }]
+                        }
+                    })
+
+        m.setattr(cli_runner, 'get_parser',
+                  lambda url, chrome_options, parser_options: DummyParser(parser_options))
+
         result_path = os.path.join(tmpdir, f'output.{format}')
 
         m.setattr(sys, 'argv', [
