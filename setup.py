@@ -105,7 +105,9 @@ if __name__ == '__main__':
         ],
         extras_require={
             'gui': [
-                'PySimpleGUI==4.59.0',
+                # 4.x is no longer available in public index on some runners.
+                # Keep GUI extra installable with currently published versions.
+                'PySimpleGUI>=5.0.8.2,<6',
             ],
             'dev': (
                 (
