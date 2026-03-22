@@ -23,7 +23,7 @@ jobs:
             dist: macos-arm
             ext:
 
-          - os: windows-2019
+          - os: windows-latest
             dist: windows
 
     runs-on: ${{ matrix.os }}
@@ -34,10 +34,10 @@ jobs:
       run: echo ::set-output name=version::${GITHUB_REF#refs/tags/}
       shell: bash
 
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set up Python 3.11
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
         python-version: "3.11.3"
 
@@ -84,7 +84,7 @@ jobs:
         echo ::set-output name=version::${GITHUB_REF#refs/tags/v}
       shell: bash
 
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Get Changelog Entry
       id: changelog_reader
