@@ -2,6 +2,15 @@
 
 ## [Невошедшее]
 
+## [1.2.2] - 22-03-2026
+### Добавлено
+- CSV: Добавлена настройка разделителя колонок `delimiter`.
+- CSV: Добавлено принудительное экранирование полей (`QUOTE_ALL`) для более безопасного открытия в таблицах.
+- README: Добавлена секция `Где находится ядро парсинга`.
+
+### Исправлено
+- CSV: Форматирование рейтинга отзывов в единообразном десятичном виде (с запятой) для снижения риска автоконвертации в дату.
+
 ## [1.2.1] - 14-03-2024
 ### Добавлено
 - Добавлена поддержка парсинга остановок. Fix [issue](https://github.com/interlark/parser-2gis/issues/52).
@@ -94,7 +103,8 @@
 - Первый релиз.
 
 
-[Невошедшее]: https://github.com/interlark/parser-2gis/compare/v1.2.1...HEAD
+[Невошедшее]: https://github.com/interlark/parser-2gis/compare/v1.2.2...HEAD
+[1.2.2]: https://github.com/interlark/parser-2gis/compare/v1.2.1...v1.2.2
 [1.2.1]: https://github.com/interlark/parser-2gis/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/interlark/parser-2gis/compare/v1.1.2...v1.2.0
 [1.1.2]: https://github.com/interlark/parser-2gis/compare/v1.1.1...v1.1.2

@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*.*.*'
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build
@@ -12,10 +15,10 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-20.04
+          - os: ubuntu-latest
             dist: linux
 
-          - os: macos-12
+          - os: macos-latest
             dist: macos
             ext:
 
@@ -23,7 +26,7 @@ jobs:
             dist: macos-arm
             ext:
 
-          - os: windows-2019
+          - os: windows-latest
             dist: windows
 
     runs-on: ${{ matrix.os }}
@@ -34,10 +37,10 @@ jobs:
       run: echo ::set-output name=version::${GITHUB_REF#refs/tags/}
       shell: bash
 
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set up Python 3.11
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
         python-version: "3.11.3"
 
@@ -64,7 +67,7 @@ jobs:
       shell: bash
 
     - name: Upload distributive
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: dist-${{ matrix.dist }}
         path: Parser2GIS-*
@@ -84,7 +87,7 @@ jobs:
         echo ::set-output name=version::${GITHUB_REF#refs/tags/v}
       shell: bash
 
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Get Changelog Entry
       id: changelog_reader
@@ -93,7 +96,7 @@ jobs:
         version: ${{ steps.get_version.outputs.version }}
         path: ./CHANGELOG.md
 
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
 
     - uses: ncipollo/release-action@v1.10.0
       with:

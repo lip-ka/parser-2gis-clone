@@ -47,6 +47,22 @@
 ## 📖 Документация
 Описание работы доступно на [вики](https://github.com/interlark/parser-2gis/wiki).
 
+## 🧠 Где находится ядро парсинга
+
+Если нужно понять, где извлекаются поля и как формируется CSV/XLSX/JSON:
+
+- `parser_2gis/parser/parsers/main.py` — основной сценарий прохода по страницам поиска 2GIS,
+  клик по карточкам и получение JSON-ответов `catalog.api.2gis.../items/byid`.
+- `parser_2gis/parser/parsers/in_building.py` и `parser_2gis/parser/parsers/firm.py` — вариации
+  парсера для URL форматов `inside/...` и `firm/...`.
+- `parser_2gis/writer/writers/csv_writer.py` — маппинг полей API в колонки CSV
+  (`_data_mapping`) и извлечение значений (`_extract_raw`).
+- `parser_2gis/writer/models/catalog_item.py` + `parser_2gis/writer/models/*.py` — схема
+  структуры API-документа (через Pydantic), с которой работает writer.
+
+Именно связка `*_parser.py` (получение JSON) + `csv_writer.py`/`xlsx_writer.py` (раскладка по колонкам)
+является «ядром», которое стоит проверять первым при изменениях структуры 2GIS.
+
 ## 👍 Поддержать проект
 <a href="https://yoomoney.ru/to/4100118362270186" target="_blank">
   <img alt="Yoomoney Donate" src="https://github.com/interlark/parser-2gis/assets/20641837/e875e948-0d69-4ed5-804c-8a1736ab0c9d" width="150">
