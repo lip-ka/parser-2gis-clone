@@ -15,7 +15,7 @@ jobs:
           - os: ubuntu-latest
             dist: linux
 
-          - os: macos-13
+          - os: macos-latest
             dist: macos
             ext:
 
