@@ -2,6 +2,11 @@
 
 ## [Невошедшее]
 
+## [1.2.3] - 22-03-2026
+### Исправлено
+- CI: Обновлены runner labels и версии GitHub Actions для стабильного запуска сборок.
+- Release: Добавлены права `contents: write` для корректного создания draft-релиза.
+
 ## [1.2.2] - 22-03-2026
 ### Добавлено
 - CSV: Добавлена настройка разделителя колонок `delimiter`.
@@ -103,7 +108,8 @@
 - Первый релиз.
 
 
-[Невошедшее]: https://github.com/interlark/parser-2gis/compare/v1.2.2...HEAD
+[Невошедшее]: https://github.com/interlark/parser-2gis/compare/v1.2.3...HEAD
+[1.2.3]: https://github.com/interlark/parser-2gis/compare/v1.2.2...v1.2.3
 [1.2.2]: https://github.com/interlark/parser-2gis/compare/v1.2.1...v1.2.2
 [1.2.1]: https://github.com/interlark/parser-2gis/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/interlark/parser-2gis/compare/v1.1.2...v1.2.0
