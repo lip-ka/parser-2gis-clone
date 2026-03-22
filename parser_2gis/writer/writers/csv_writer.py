@@ -43,7 +43,21 @@ class CSVWriter(FileWriter):
             'address': 'Адрес', 'address_comment': 'Комментарий к адресу',
             'postcode': 'Почтовый индекс', 'living_area': 'Микрорайон', 'district': 'Район', 'city': 'Город',
             'district_area': 'Округ', 'region': 'Регион', 'country': 'Страна', 'schedule': 'Часы работы',
-            'timezone': 'Часовой пояс', 'general_rating': 'Рейтинг', 'general_review_count': 'Количество отзывов'
+            'timezone': 'Часовой пояс', 'timezone_offset': 'Смещение часового пояса (мин)',
+            'general_rating': 'Рейтинг', 'general_review_count': 'Количество отзывов',
+            'locale': 'Локаль',
+            'city_alias': 'Алиас города',
+            'region_id': 'ID региона',
+            'segment_id': 'ID сегмента',
+            'is_deleted': 'Удалена',
+            'org_id': 'ID организации',
+            'org_name': 'Название организации',
+            'org_branch_count': 'Количество филиалов организации',
+            'schedule_is_24x7': 'Работает 24/7',
+            'schedule_description': 'Описание расписания',
+            'schedule_comment': 'Комментарий к расписанию',
+            'schedule_date_from': 'Расписание действует с',
+            'schedule_date_to': 'Расписание действует до',
         }
 
         # Expand complex mapping
@@ -241,6 +255,20 @@ class CSVWriter(FileWriter):
         # Timezone
         if catalog_item.timezone is not None:
             data['timezone'] = catalog_item.timezone
+        data['timezone_offset'] = catalog_item.timezone_offset
+
+        # Service fields
+        data['locale'] = catalog_item.locale
+        data['city_alias'] = catalog_item.city_alias
+        data['region_id'] = catalog_item.region_id
+        data['segment_id'] = catalog_item.segment_id
+        data['is_deleted'] = catalog_item.is_deleted
+
+        # Organization
+        if catalog_item.org:
+            data['org_id'] = catalog_item.org.id
+            data['org_name'] = catalog_item.org.name
+            data['org_branch_count'] = catalog_item.org.branch_count
 
         # Administrative location details
         for div in catalog_item.adm_div:
@@ -306,6 +334,11 @@ class CSVWriter(FileWriter):
         if catalog_item.schedule:
             data['schedule'] = catalog_item.schedule.to_str(self._options.csv.join_char,
                                                             self._options.csv.add_comments)
+            data['schedule_is_24x7'] = catalog_item.schedule.is_24x7
+            data['schedule_description'] = catalog_item.schedule.description
+            data['schedule_comment'] = catalog_item.schedule.comment
+            data['schedule_date_from'] = catalog_item.schedule.date_from
+            data['schedule_date_to'] = catalog_item.schedule.date_to
 
         # Rubrics
         if self._options.csv.add_rubrics:
