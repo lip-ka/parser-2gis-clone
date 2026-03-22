@@ -34,7 +34,13 @@
 
 ### Установка одним файлом
 
-  Скачать [релиз](https://github.com/interlark/parser-2gis/releases/latest).
+  Скачать [последний релиз](https://github.com/interlark/parser-2gis/releases/latest) и выбрать артефакт под вашу ОС:
+  - `Parser2GIS-<версия>-windows.zip` — Windows (`Parser2GIS.exe`)
+  - `Parser2GIS-<версия>-linux.tar.gz` — Linux
+  - `Parser2GIS-<версия>-macos.tar.gz` — MacOS (Intel)
+  - `Parser2GIS-<версия>-macos-arm.tar.gz` — MacOS (Apple Silicon)
+
+  Релизы публикуются автоматически после пуша тега вида `vX.Y.Z` и сразу доступны для скачивания внешним пользователям.
 
 ### Установка из PyPI
   ```bash

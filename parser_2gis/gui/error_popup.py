@@ -7,7 +7,9 @@ from ..paths import image_data
 from .utils import ensure_gui_enabled
 
 if GUI_ENABLED:
-    import PySimpleGUI as sg
+    from .sg import load_sg_module
+
+    sg = load_sg_module()
 
 
 @ensure_gui_enabled

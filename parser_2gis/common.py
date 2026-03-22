@@ -8,16 +8,19 @@ from typing import Any, Callable
 
 from pydantic import ValidationError
 
-try:
-    import PySimpleGUI
-    del PySimpleGUI
-    GUI_ENABLED = True
-except ImportError as e:
-    if e.name != 'PySimpleGUI':
-        # GUI was installed, but failed to load
-        # due to tkinter missing or other dependencies.
-        warnings.warn('Failed to load GUI: %s' % e.msg)
-    GUI_ENABLED = False
+def _is_gui_enabled() -> bool:
+    """Check if a compatible SimpleGUI module can be loaded."""
+    try:
+        from .gui.sg import load_sg_module
+
+        load_sg_module()
+        return True
+    except ImportError as e:
+        warnings.warn('Failed to load GUI: %s' % e)
+        return False
+
+
+GUI_ENABLED = _is_gui_enabled()
 
 
 def running_linux() -> bool:
