@@ -10,11 +10,11 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-20.04
+          - os: ubuntu-latest
             dist: linux
             ext:
 
-          - os: macos-12
+          - os: macos-latest
             dist: macos
             ext:
 
@@ -22,17 +22,17 @@ jobs:
             dist: macos-arm
             ext:
 
-          - os: windows-2019
+          - os: windows-latest
             dist: windows
             ext: .exe
 
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set up Python 3.11
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
         python-version: "3.11.3"
 
@@ -49,7 +49,7 @@ jobs:
         python setup.py build_standalone
 
     - name: Upload distributive
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Parser2GIS-dev-${{matrix.dist}}
         path: dist/Parser2GIS${{matrix.ext}}
