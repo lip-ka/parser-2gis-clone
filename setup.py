@@ -63,6 +63,8 @@ class BuildStandaloneCommand(distutils.cmd.Command):
             # Add data
             build_cmd += [
                 '--add-data', f'parser_2gis/data{os.pathsep}parser_2gis/data',
+                '--hidden-import', 'PySimpleGUI',
+                '--hidden-import', 'FreeSimpleGUI',
                 'parser-2gis.py',
             ]
 
