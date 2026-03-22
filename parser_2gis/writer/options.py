@@ -34,6 +34,7 @@ class CSVOptions(BaseModel):
             raise ValueError('delimiter must not be a newline character')
         return v
 
+
 class WriterOptions(BaseModel):
     """Represent all possible options for File Writer.
 
