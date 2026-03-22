@@ -2,6 +2,12 @@
 
 ## [Невошедшее]
 
+## [1.2.5] - 22-03-2026
+### Исправлено
+- Release: GitHub Release теперь публикуется сразу (не draft) и доступен внешним пользователям для скачивания бинарников.
+- Release: Добавлен ручной запуск workflow `Release` (`workflow_dispatch`) с указанием тега для повторной публикации.
+- README: Уточнены имена файлов релиза по ОС и процесс публикации.
+
 ## [1.2.4] - 22-03-2026
 ### Исправлено
 - Release: Финализирована подготовка метаданных под итоговую публикацию.
@@ -113,7 +119,8 @@
 - Первый релиз.
 
 
-[Невошедшее]: https://github.com/interlark/parser-2gis/compare/v1.2.4...HEAD
+[Невошедшее]: https://github.com/interlark/parser-2gis/compare/v1.2.5...HEAD
+[1.2.5]: https://github.com/interlark/parser-2gis/compare/v1.2.4...v1.2.5
 [1.2.4]: https://github.com/interlark/parser-2gis/compare/v1.2.3...v1.2.4
 [1.2.3]: https://github.com/interlark/parser-2gis/compare/v1.2.2...v1.2.3
 [1.2.2]: https://github.com/interlark/parser-2gis/compare/v1.2.1...v1.2.2

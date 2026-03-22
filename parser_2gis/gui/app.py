@@ -22,7 +22,9 @@ if TYPE_CHECKING:
 if GUI_ENABLED:
     import tkinter as tk
 
-    import PySimpleGUI as sg
+    from .sg import load_sg_module
+
+    sg = load_sg_module()
 
 
 @ensure_gui_enabled

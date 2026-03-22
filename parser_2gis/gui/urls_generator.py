@@ -9,7 +9,9 @@ from .rubric_selector import gui_rubric_selector
 from .utils import ensure_gui_enabled, setup_text_widget, url_query_encode
 
 if GUI_ENABLED:
-    import PySimpleGUI as sg
+    from .sg import load_sg_module
+
+    sg = load_sg_module()
 
 
 @ensure_gui_enabled
