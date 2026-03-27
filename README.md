@@ -1,26 +1,4 @@
-<p align="center">
-  <a href="#%E2%84%B9%EF%B8%8F-%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5">
-    <img alt="Logo" width="128" src="https://user-images.githubusercontent.com/20641837/174094285-6e32eb04-7feb-4a60-bddf-5a0fde5dba4d.png"/>
-  </a>
-</p>
-<h1 align="center">Parser2GIS</h1>
-
-<p align="center">
-  <a href="https://github.com/interlark/parser-2gis/actions/workflows/tests.yml"><img src="https://github.com/interlark/parser-2gis/actions/workflows/tests.yml/badge.svg" alt="Tests"/></a>
-  <a href="https://pypi.org/project/parser-2gis"><img src="https://badgen.net/pypi/v/parser-2gis" alt="PyPi version"/></a>
-  <a href="https://pypi.org/project/parser-2gis"><img src="https://badgen.net/pypi/python/parser-2gis" alt="Supported Python versions"/></a>
-  <a href="https://github.com/interlark/parser-2gis/releases"><img src="https://img.shields.io/github/downloads/interlark/parser-2gis/total.svg" alt="Downloads"/></a>
-</p>
-
 **Parser2GIS** - парсер сайта [2GIS](https://2gis.ru/) с помощью браузера [Google Chrome](https://google.com/chrome).
-
-<img alt="Screenshot" src="https://user-images.githubusercontent.com/20641837/174098241-7c0874aa-e70d-4978-86dc-7fd90af44603.png"/>
-
-## ℹ️ Описание
-
-Парсер для автоматического сбора базы адресов и контактов предприятий, которые работают на территории
-России <img width="18px" src="https://user-images.githubusercontent.com/20641837/183511175-3d47f0f0-4e3f-45d2-8495-95d0612a8a8c.svg"/>, Казахстана <img width="18px" src="https://user-images.githubusercontent.com/20641837/183511625-20420aef-59c3-426d-a112-654d2caf0dda.svg"/>, Беларуси <img width="18px" src="https://user-images.githubusercontent.com/20641837/183511940-ce088ad1-d97f-4fa1-849a-9b887ad481c5.svg"/>,
-Азербайджана <img width="18px" src="https://user-images.githubusercontent.com/20641837/183512176-1f6795a1-ceac-4865-a29f-b5720ce5115e.svg"/>, Киргизии <img width="18px" src="https://user-images.githubusercontent.com/20641837/183512234-286ca403-5194-4a6d-a59e-59201140078a.svg"/>, Узбекистана <img width="18px" src="https://user-images.githubusercontent.com/20641837/183512333-7ec1f36d-07fe-450d-b6f1-eed59a3b69c8.svg"/>, Чехии <img width="18px" src="https://user-images.githubusercontent.com/20641837/183512458-5a5d9531-a8f0-4624-99da-7069cde84926.svg"/>, Египта <img width="18px" src="https://user-images.githubusercontent.com/20641837/183512581-71fa2106-8cc1-43cc-a680-b3ff420acb8a.svg"/>, Италии <img width="18px" src="https://user-images.githubusercontent.com/20641837/183512763-0b438e5b-3ff0-4717-a826-0baac9207167.svg"/>, Саудовской Аравии <img width="18px" src="https://user-images.githubusercontent.com/20641837/183512980-427a985a-df1b-42c8-90bb-2c61692b6654.svg"/>, Кипра <img width="18px" src="https://user-images.githubusercontent.com/20641837/183513128-4367d2b1-feb9-4efe-bc57-73a15d178ef2.svg"/>, Объединенных Арабских Эмиратов <img width="18px" src="https://user-images.githubusercontent.com/20641837/183513374-9afef8c7-923e-4a18-9cd8-c69645b99377.svg"/>, Чили <img width="18px" src="https://user-images.githubusercontent.com/20641837/183513576-7209ce90-a04a-4258-9832-ef210198c3c4.svg"/>, Катара <img width="18px" src="https://user-images.githubusercontent.com/20641837/183513757-143ee2bf-b66c-4766-bbe1-db896a33eac1.svg"/>, Омана <img width="18px" src="https://user-images.githubusercontent.com/20641837/183513865-27509b74-b08f-4d92-b83b-a0d3aaabe155.svg"/>, Бахрейна <img width="18px" src="https://user-images.githubusercontent.com/20641837/183514076-3b6c9496-7c95-4452-8ee1-8723d98f876d.svg"/>, Кувейта <img width="18px" src="https://user-images.githubusercontent.com/20641837/183514240-7eff8632-5cd2-46ac-bed4-e483bb2df5f0.svg"/>.
 
 ## ✨ Особенности
 - 🤖 Успешно обходит анти-бот блокировки на территории РФ
@@ -40,40 +18,331 @@
   - `Parser2GIS-<версия>-macos.tar.gz` — MacOS (Intel)
   - `Parser2GIS-<версия>-macos-arm.tar.gz` — MacOS (Apple Silicon)
 
-### Локальный запуск проекта (для разработки в PyCharm)
+@@ -28,48 +28,350 @@
+- 🖥️ Работает под Windows, Linux и MacOS
+- 📄 Три выходных формата: CSV таблица, XLSX таблица и JSON список
+- 🔗 Наличие генератора ссылок по городам и рубрикам
 
-Рекомендуется использовать отдельное виртуальное окружение и устанавливать зависимости через `python -m pip`,
-чтобы `pip` и интерпретатор проекта всегда совпадали.
+## 🚀 Установка
+> Для работы парсера необходимо установить браузер [Google Chrome](https://google.com/chrome).
 
-```bash
-# Создать и активировать venv
-python -m venv .venv
-# Windows (PowerShell)
-.\.venv\Scripts\Activate.ps1
-# Linux/MacOS
-source .venv/bin/activate
+### Установка одним файлом
 
-# Установить зависимости проекта
+  Скачать [последний релиз](https://github.com/interlark/parser-2gis/releases/latest) и выбрать артефакт под вашу ОС:
+  - `Parser2GIS-<версия>-windows.zip` — Windows (`Parser2GIS.exe`)
+  - `Parser2GIS-<версия>-linux.tar.gz` — Linux
+  - `Parser2GIS-<версия>-macos.tar.gz` — MacOS (Intel)
+  - `Parser2GIS-<версия>-macos-arm.tar.gz` — MacOS (Apple Silicon)
+
+  Релизы публикуются автоматически после пуша тега вида `vX.Y.Z` и сразу доступны для скачивания внешним пользователям.
+
+### Установка из PyPI
+  ```bash
+  # CLI
+  pip install parser-2gis
+  # CLI + GUI
+  pip install parser-2gis[gui]
+  ```
+
+### Подробная инструкция по установке и запуску в **PyCharm на Windows**
+
+В этом разделе полный, структурированный сценарий «с нуля» для Windows:
+от скачивания проекта до стабильного запуска GUI/CLI и внесения правок в код.
+Все команды в этом разделе предполагается выполнять во **встроенном локальном терминале PyCharm**.
+
+#### 0) Что должно быть установлено заранее
+
+1. **Git for Windows** (если планируете менять основной репозиторий на GitHub)
+2. **Python 3.11.x** (рекомендуется)
+3. **PyCharm** (Community или Professional)
+4. **Google Chrome** (обязательно для работы парсера)
+
+> Важно: используйте именно Python 3.11 и всегда ставьте пакеты через
+> `python -m pip ...`, а не просто `pip ...`.
+> Это защищает от типичной ошибки, когда `pip` ставит зависимости в другой Python.
+
+##### 0.1 Как установить Python 3.11 на Windows (подробно)
+
+1. Перейдите на официальный сайт Python: **https://www.python.org/downloads/windows/**.
+2. В блоке Python 3.11 скачайте установщик:
+   - обычно это `Windows installer (64-bit)` (`python-3.11.x-amd64.exe`).
+3. Сохраните файл установщика в удобную папку, например:
+   - `C:\Users\<you>\Downloads\`
+   - или `C:\Installers\Python\`
+
+> Куда «складывать» файл установщика не критично: это временный `.exe`, который нужен только для установки.
+> После успешной установки его можно оставить в архивной папке (`C:\Installers\...`) или удалить.
+
+4. Запустите скачанный `.exe` от имени обычного пользователя.
+5. На первом экране установки **обязательно** включите:
+   - `Add python.exe to PATH`
+6. Нажмите `Customize installation` (рекомендуется), затем `Next`.
+7. На шаге `Advanced Options` оставьте включённым:
+   - `Install for all users` (по желанию),
+   - `Add Python to environment variables`,
+   - `Associate files with Python`.
+8. Завершите установку.
+
+##### 0.2 Как установить PyCharm на Windows (подробно)
+
+1. Откройте ссылку на скачивание PyCharm:
+   - **https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=windows**
+2. Дождитесь загрузки установщика (`.exe`).
+3. Сохраните установщик в удобное место, например:
+   - `C:\Users\<you>\Downloads\`
+   - `C:\Installers\JetBrains\`
+4. Запустите установщик PyCharm.
+5. На шаге установки (Installation Options) рекомендуется:
+   - включить `Add "bin" folder to the PATH`;
+   - включить ассоциацию `.py` с PyCharm (по желанию);
+   - включить `Create Desktop Shortcut` (по желанию).
+6. Завершите установку и запустите PyCharm.
+7. При первом старте:
+   - выберите тему/настройки интерфейса;
+   - при необходимости войдите в JetBrains Account;
+   - дождитесь инициализации IDE.
+
+Проверка, что python установился корретно 
+
+(во встроенном терминале PyChar):
+
+```cmd
+py -3.11 --version
+py -0p
+```
+
+Ожидаемо:
+- первая команда показывает `Python 3.11.x`;
+- вторая показывает список установленных Python и путь к `Python311\python.exe`.
+
+Если `py` не найден:
+
+```cmd
+python --version
+where python
+```
+
+В этом случае проверьте, что Python добавлен в PATH, или переустановите Python с галочкой `Add python.exe to PATH`.
+
+Проверка, что всё установилось корректно:
+
+1. PyCharm запускается без ошибок.
+2. В меню доступны:
+   - **Get from VCS** (для клонирования репозитория),
+   - **File → Settings → Project → Python Interpreter** (для настройки Python 3.11).
+
+---
+
+#### 1) Скачивание репозитория в PyCharm
+
+1. Откройте PyCharm.
+2. Нажмите **Get from VCS**.
+3. Вставьте URL репозитория:
+   - SSH: `git@github.com:lip-ka/parser-2gis-clone.git`
+   - HTTPS: `https://github.com/lip-ka/parser-2gis-clone.git`
+4. Выберите папку, например `C:\Users\<you>\PycharmProjects\parser-2gis-clone`.
+5. Нажмите **Clone**.
+---
+
+#### 2) Создание и подключение интерпретатора Python 3.11
+
+1. В PyCharm: **File → Settings → Project → Python Interpreter**.
+2. Нажмите **Add Interpreter**.
+3. Выберите:
+   - **Add Local Interpreter**
+   - **Virtualenv Environment**
+   - **New**
+4. Укажите:
+   - `Base interpreter`: путь к `Python311\python.exe` -- то место, куда вы сохранили Python 3.11 на подготовительном шаге
+   - `Location`: `<project>\.venv`
+5. Нажмите **OK / Apply**.
+
+Подсказка по пути `Base interpreter`:
+- чаще всего это `C:\Users\<you>\AppData\Local\Programs\Python\Python311\python.exe`;
+- если ставили `Install for all users`, путь может быть `C:\Program Files\Python311\python.exe`.
+
+Если кнопка **OK** неактивна:
+- проверьте, что `Base interpreter` выбран;
+- укажите новый (не существующий) путь для venv;
+- попробуйте путь без кириллицы/пробелов;
+- или создайте venv вручную (см. шаг 3).
+
+---
+
+#### 3) Создание venv вручную (если удобнее)
+
+Во встроенном терминале PyCharm:
+
+```cmd
+py -3.11 -m venv .venv
+.venv\Scripts\activate
+python --version
+```
+
+После этого в PyCharm можно выбрать **Existing interpreter**:
+`<project>\.venv\Scripts\python.exe`.
+
+---
+
+#### 4) Проверка, что `python` и `pip` смотрят в один интерпретатор
+
+Обязательная проверка перед установкой зависимостей:
+
+```cmd
+python -c "import sys; print('PYTHON =', sys.executable)"
+python -m pip -V
+```
+
+Если пути отличаются — выбран не тот интерпретатор.
+
+---
+
+#### 5) Установка зависимостей проекта
+
+Ввести команды во встроенный терминал
+
+Базовые (CLI). 
+
+```cmd
 python -m pip install --upgrade pip
 python -m pip install -e .
 ```
 
-Для запуска GUI дополнительно установите GUI-зависимости:
+GUI-зависимости:
 
-```bash
+```cmd
 python -m pip install -e ".[gui]"
 ```
 
-После этого GUI можно запускать без обязательных CLI-аргументов:
+Проверка:
 
-```bash
+```cmd
+python -m pip show pydantic
+python -m pip show FreeSimpleGUI PySimpleGUI
+```
+
+---
+
+#### 6) Настройка Run/Debug Configuration в PyCharm
+
+Рекомендуется сделать **две** конфигурации.
+
+##### 6.1 GUI-конфигурация (обычная работа через окно)
+
+- **Type**: Python
+- **Run kind**: Script path
+- **Script path**: `<project>\parser-2gis.py`
+- **Parameters**: пусто
+- **Working directory**: корень проекта
+- **Interpreter**: `<project>\.venv\Scripts\python.exe`
+
+Запуск:
+
+```cmd
 python parser-2gis.py
 ```
 
-Если хотите запускать CLI, укажите параметры `-i`, `-o`, `-f`.
+##### 6.2 CLI-конфигурация (быстрые тестовые прогоны)
 
+- **Type**: Python
+- **Run kind**: Script path
+- **Script path**: `<project>\parser-2gis.py`
+- **Working directory**: корень проекта
+- **Interpreter**: `<project>\.venv\Scripts\python.exe`
+- **Parameters** (пример JSON-выгрузки):
+
+```text
+-i "https://2gis.ru/moscow/search/кофе" -o "output/result.json" -f json --chrome.headless yes --parser.max-records 200 --writer.verbose yes
+```
+
+Обязательные параметры CLI: `-i`, `-o`, `-f`.
+
+---
+
+#### 7) Форматы результата и примеры команд
+
+- CSV: `-f csv -o output/result.csv`
+- XLSX: `-f xlsx -o output/result.xlsx`
+- JSON: `-f json -o output/result.json`
+
+Пример JSON:
+
+```cmd
+python parser-2gis.py -i "https://2gis.ru/moscow/search/кофе" -o "output/result.json" -f json
+```
+
+---
+
+#### 8) Что обязательно сделать перед первым запуском
+
+Создайте папку для результатов, чтобы избежать `FileNotFoundError`:
+
+```cmd
+mkdir output
+```
+
+---
+
+#### 9) Диагностика, если «зависает» или «не запускается»
+
+1. Для диагностики запускайте так:
+   - `--chrome.headless no`
+   - `--chrome.silent-browser no`
+   - `--parser.max-records 10`
+2. Временно выключите VPN/Proxy.
+3. Проверьте, что Chrome открывается вручную и доступен интернет.
+4. Убедитесь, что в PyCharm выбран именно `.venv` проекта.
+
+---
+
+#### 10) Частые ошибки и быстрые решения
+
+##### `ModuleNotFoundError: No module named pydantic`
+
+```cmd
+python -m pip install -e .
+python -m pip show pydantic
+```
+
+##### `pip` не найден
+
+```cmd
+py -m pip --version
+```
+
+или:
+
+```cmd
+python -m pip --version
+```
+
+##### Предупреждение `RuntimeWarning: 'parser_2gis.main' found in sys.modules ...`
+
+Запускайте через script `parser-2gis.py` (как в конфигурации выше), а не через `-m parser_2gis.main`.
+
+##### GUI не стартует
+
+```cmd
+python -m pip install -e ".[gui]"
+python -m pip show FreeSimpleGUI PySimpleGUI
+```
+
+---
+
+#### 11) Рекомендуемый рабочий процесс (локальная разработка) (тут уже нужен git)
+
+1. Создайте ветку:
+
+```cmd
+git checkout -b feature/<short-name>
+```
+
+2. Внесите правки в код.
+3. Запустите GUI/CLI и проверьте результат.
+4. Сделайте commit.
+5. Отправьте ветку в GitHub и создайте Pull Request.
 ## 📖 Документация
-Описание работы доступно на [вики](https://github.com/interlark/parser-2gis/wiki).
+Описание работы доступно на [вики](https://github.com/lip-ka/parser-2gis-clone/wiki).
 
 
 ## 🧠 Где находится ядро парсинга
