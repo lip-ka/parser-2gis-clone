@@ -18,32 +18,6 @@
   - `Parser2GIS-<версия>-macos.tar.gz` — MacOS (Intel)
   - `Parser2GIS-<версия>-macos-arm.tar.gz` — MacOS (Apple Silicon)
 
-@@ -28,48 +28,350 @@
-- 🖥️ Работает под Windows, Linux и MacOS
-- 📄 Три выходных формата: CSV таблица, XLSX таблица и JSON список
-- 🔗 Наличие генератора ссылок по городам и рубрикам
-
-## 🚀 Установка
-> Для работы парсера необходимо установить браузер [Google Chrome](https://google.com/chrome).
-
-### Установка одним файлом
-
-  Скачать [последний релиз](https://github.com/lip-ka/parser-2gis-clone/releases/tag/v1.2.8) и выбрать артефакт под вашу ОС:
-  - `Parser2GIS-<версия>-windows.zip` — Windows (`Parser2GIS.exe`)
-  - `Parser2GIS-<версия>-linux.tar.gz` — Linux
-  - `Parser2GIS-<версия>-macos.tar.gz` — MacOS (Intel)
-  - `Parser2GIS-<версия>-macos-arm.tar.gz` — MacOS (Apple Silicon)
-
-  Релизы публикуются автоматически после пуша тега вида `vX.Y.Z` и сразу доступны для скачивания внешним пользователям.
-
-### Установка из PyPI
-  ```bash
-  # CLI
-  pip install parser-2gis
-  # CLI + GUI
-  pip install parser-2gis[gui]
-  ```
-
 ### Подробная инструкция по установке и запуску в **PyCharm на Windows**
 
 В этом разделе полный, структурированный сценарий «с нуля» для Windows:
