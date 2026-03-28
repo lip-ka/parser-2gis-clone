@@ -9,6 +9,7 @@ from ..common import GUI_ENABLED, running_linux, running_windows
 from ..logger import logger, setup_cli_logger, setup_gui_logger
 from ..paths import image_data, image_path
 from ..runner import GUIRunner
+from ..writer import validate_output_path_format
 from ..version import version
 from .error_popup import gui_error_popup
 from .settings import gui_settings
@@ -258,14 +259,10 @@ def gui_app(urls: list[str], output_path: str, format: str, config: Configuratio
                 gui_error_popup('Отсутствует URL!')
                 continue
 
-            # Check result format
-            if values['-FILE_FORMAT-'] not in ('csv', 'xlsx', 'json'):
-                gui_error_popup('Формат результирующего файла должен быть csv, xlsx или json!')
-                continue
-
-            # Check if result format match output file extension
-            if values['-OUTPUT_PATH-'].split('.')[-1].lower() != values['-FILE_FORMAT-']:
-                gui_error_popup('Расширение результирующего файла должно быть *.%s!' % values['-FILE_FORMAT-'])
+            try:
+                validate_output_path_format(values['-OUTPUT_PATH-'], values['-FILE_FORMAT-'])
+            except ValueError as e:
+                gui_error_popup(str(e))
                 continue
 
             # Sync urls with input element

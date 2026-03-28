@@ -12,7 +12,7 @@
 
 ### Установка одним файлом
 
-  Скачать [последний релиз](https://github.com/lip-ka/parser-2gis-clone/releases/tag/v1.2.8) и выбрать артефакт под вашу ОС:
+  Скачать [последний релиз](https://github.com/lip-ka/parser-2gis-clone/releases/tag/v1.3.0) и выбрать артефакт под вашу ОС:
   - `Parser2GIS-<версия>-windows.zip` — Windows (`Parser2GIS.exe`)
   - `Parser2GIS-<версия>-linux.tar.gz` — Linux
   - `Parser2GIS-<версия>-macos.tar.gz` — MacOS (Intel)
