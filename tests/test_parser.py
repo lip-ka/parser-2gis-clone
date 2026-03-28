@@ -2,6 +2,8 @@ import csv
 import json
 import os
 import sys
+import xml.etree.ElementTree as ET
+import zipfile
 from tempfile import TemporaryDirectory
 
 import pytest
@@ -52,8 +54,24 @@ def check_json_result(result_path, num_records):
         assert len(doc) == num_records
 
 
+def check_xlsx_result(result_path, num_records):
+    """Check XLSX output."""
+    with zipfile.ZipFile(result_path) as zf:
+        with zf.open('xl/worksheets/sheet1.xml') as f:
+            root = ET.parse(f).getroot()
+
+    ns = {'x': 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+    rows = root.findall('.//x:sheetData/x:row', ns)
+    assert len(rows) == num_records + 1  # `num_records` + header
+
+    first_row_cells = rows[0].findall('x:c', ns)
+    # Ensure we have a real table-like header, not a single merged CSV-like cell.
+    assert len(first_row_cells) > 1
+
+
 testdata = [
     ['csv', check_csv_result],
+    ['xlsx', check_xlsx_result],
     ['json', check_json_result],
 ]
 

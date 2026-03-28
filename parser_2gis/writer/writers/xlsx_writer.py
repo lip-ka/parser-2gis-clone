@@ -22,7 +22,7 @@ class XLSXWriter(CSVWriter):
 
             worksheet = workbook.add_worksheet()
             with self._open_file(self._file_path, 'r') as f_csv:
-                csv_reader = csv.reader(f_csv)
+                csv_reader = csv.reader(f_csv, delimiter=self._options.csv.delimiter)
                 for r, row in enumerate(csv_reader):
                     for c, col in enumerate(row):
                         if r == 0:
