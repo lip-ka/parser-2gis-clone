@@ -5,6 +5,9 @@
 ## [1.3.0] - 28-03-2026
 ### Исправлено
 - Release: Обновлены метки версии проекта под релизный тег `v1.3.0`.
+## [1.2.9] - 28-03-2026
+### Исправлено
+- Release: Обновлены метки версии проекта под релизный тег `v1.2.9`.
 
 ## [1.2.8] - 22-03-2026
 ### Добавлено
@@ -145,6 +148,7 @@
 
 [Невошедшее]: https://github.com/interlark/parser-2gis/compare/v1.3.0...HEAD
 [1.3.0]: https://github.com/interlark/parser-2gis/compare/v1.2.9...v1.3.0
+[1.2.9]: https://github.com/interlark/parser-2gis/compare/v1.2.8...v1.2.9
 [1.2.8]: https://github.com/interlark/parser-2gis/compare/v1.2.7...v1.2.8
 [1.2.7]: https://github.com/interlark/parser-2gis/compare/v1.2.6...v1.2.7
 [1.2.6]: https://github.com/interlark/parser-2gis/compare/v1.2.5...v1.2.6
