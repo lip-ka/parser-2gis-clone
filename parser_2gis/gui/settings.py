@@ -62,6 +62,24 @@ def gui_settings(config: Configuration) -> None:
                         ],
                     ], expand_x=True, pad=((3, 3), (3, 5))),
                 ],
+                [
+                    sg.Column([
+                        [
+                            sg.Column([
+                                [
+                                    sg.Text('Разделитель CSV'),
+                                ],
+                            ], expand_x=True, pad=0),
+                            sg.Column([
+                                [
+                                    sg.Input(size=(5, 1), key='-WRITER.CSV.DELIMITER-',
+                                             default_text=config.writer.csv.delimiter,
+                                             tooltip='Разделитель колонок CSV (один символ)'),
+                                ],
+                            ], element_justification='right', pad=0),
+                        ],
+                    ], expand_x=True, pad=((3, 3), (0, 5))),
+                ],
             ]),
         ],
         [

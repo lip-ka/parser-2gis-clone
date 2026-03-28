@@ -115,6 +115,7 @@ def parse_arguments() -> tuple[argparse.Namespace, Configuration]:
     csv_parser.add_argument('--writer.csv.remove-empty-columns', metavar='{yes,no}', help='Удалить пустые колонки по завершению работы парсера')
     csv_parser.add_argument('--writer.csv.remove-duplicates', metavar='{yes,no}', help='Удалить повторяющиеся записи по завершению работы парсера')
     csv_parser.add_argument('--writer.csv.join_char', metavar='{; ,% ,...}', help='Разделитель для комплексных значений ячеек Рубрики, Часы работы')
+    csv_parser.add_argument('--writer.csv.delimiter', metavar='{;,|,\t,...}', help='Разделитель колонок CSV')
 
     p_parser = arg_parser.add_argument_group('Аргументы парсера')
     p_parser.add_argument('--parser.use-gc', metavar='{yes,no}', help='Включить сборщик мусора - сдерживает быстрое заполнение RAM, уменьшает скорость парсинга')
